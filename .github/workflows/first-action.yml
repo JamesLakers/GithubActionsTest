@@ -1,10 +1,20 @@
 name: James-GithubActions-Test
-on: workflow_dispatch
+on: push
 jobs:
     First-Job:
       runs-on: ubuntu-latest
       steps: 
-        - name: Print hello
-          run: echo "Hello World"
-        - name: Print goodbye
-          run: echo "Goodbye see you later"
+        - name: Checkout
+          uses: actions/checkout@v4.2.0
+
+        - name: Install node
+          uses: actions/setup-node@v4.0.4
+          with:
+            node-version: 20
+
+        - name: Install dependencies
+          run: npm ci
+
+        - name: Run tests
+          run: npm test  
+            
