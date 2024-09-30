@@ -1,4 +1,4 @@
-name: James-GithubActions-Test
+name: JamesActions
 on: [push, workflow_dispatch]
 jobs:
     tests:
@@ -27,8 +27,8 @@ jobs:
             node-version: 20
         - name: Install dependencies
           run: npm ci
-        - name: Run tests
-          run: npm build
+        # - name: Build package
+        #   run: npm build
         - name: Deploy
           run: echo 'Deploying...' 
             

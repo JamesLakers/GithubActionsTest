@@ -1,6 +1,4 @@
-//https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs
-
-name: Output information
+name: JamesOutput
 on: issues
 jobs:
   info:
