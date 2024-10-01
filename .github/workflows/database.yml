@@ -6,14 +6,13 @@ on:
       - main
       - dev
 env:
+    MONGODB_CLUSTER_ADDRESS: jamescluster.q8b5k.mongodb.net
     MONGODB_DB_NAME: gha-demo
+    PORT: 8080
     MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
     MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
 jobs:
-  test:
-    env:
-        MONGODB_CLUSTER_ADDRESS: jamescluster.q8b5k.mongodb.net
-        PORT: 8080
+  test:        
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
