@@ -7,8 +7,8 @@ on:
       - dev
 env:
     MONGODB_DB_NAME: gha-demo
-    MONGODB_USERNAME: jlogan117
-    MONGODB_PASSWORD: OqgMrtDDuRv9Mo7P
+    MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+    MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
 jobs:
   test:
     env:
