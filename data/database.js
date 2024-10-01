@@ -7,6 +7,7 @@ const dbName = process.env.MONGODB_DB_NAME;
 
 //const uri = `mongodb+srv://${dbUser}:${dbPassword}@${clusterAddress}/?retryWrites=true&w=majority`;
 const uri = `mongodb+srv://jlogan117:OqgMrtDDuRv9Mo7P@jamescluster.q8b5k.mongodb.net/?retryWrites=true&w=majority&appName=JamesCluster`;
+console.log(uri);
 const client = new MongoClient(uri);
 
 console.log('Trying to connect to db');
