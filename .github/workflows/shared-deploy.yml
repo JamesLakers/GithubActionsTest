@@ -18,4 +18,4 @@ jobs:
      - name: List files
        run: ls    
      - name: Output contents
-       run: echo 'Deploying and uploading...'
+       run: echo "${{ toJSON(github.event) }}"
