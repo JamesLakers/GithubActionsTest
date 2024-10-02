@@ -1,0 +1,64 @@
+name: Use-Shared
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+jobs:
+    lint:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get code
+          uses: actions/checkout@v3
+        - name: Cache dependencies
+          id: cache
+          uses: actions/cache@v3
+          with:
+            path: node_modules
+            key: cache-node-modules ${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: npm ci
+        - name: Lint code
+          run: npm run lint
+    
+    build:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Checkout
+          uses: actions/checkout@v4.2.0
+        - name: Cache dependencies
+          id: cache
+          uses: actions/cache@v3
+          with:
+            path: node_modules
+            key: cache-node-modules ${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: npm ci
+        - name: Build package
+          run: npm run build
+        - name: Upload artifacts
+          uses: actions/upload-artifact@v4
+          with:
+            name: dist-files
+            path: dist
+
+    deploy:
+      needs: build
+      uses: ./.github/workflows/shared-deploy.yml
+      with:
+        artifact-name: dist-files
+
+    uploadReport:
+      needs: [lint, build, deploy]
+      if: failure()
+      runs-on: unbuntu-latest
+      steps:
+        - name: Upload test report
+          uses: actions/upload-artifact@v4
+          with:
+              name: testReport
+              path: test.json
+            
