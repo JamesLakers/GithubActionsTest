@@ -1,0 +1,9 @@
+name: Shared-Deploy
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Output contents
+       run: echo 'Deploying and uploading...'
+       
