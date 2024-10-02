@@ -6,6 +6,21 @@ on:
       - main
       - dev
 jobs:
+    lint:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get code
+          uses: actions/checkout@v3
+        - name: Cache dependencies
+          id: cache
+          uses: actions/cache@v3
+          with:
+            path: ~/.npm
+            key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+        - name: Install dependencies
+          run: npm ci
+        - name: Lint code
+          run: npm run lint
     tests:
       runs-on: ubuntu-latest
       steps: 
@@ -16,6 +31,7 @@ jobs:
           with:
             node-version: 20
         - name: Cache dependencies
+          id: cache
           uses: actions/cache@v4
           with: 
             path: ~/.npm
@@ -23,8 +39,8 @@ jobs:
         - name: Install dependencies
           run: npm ci
         - name: Run tests
-          run: npm run playtest
-        - name: Upload artifacts
+          run: npm run test
+        - name: Upload test report
           uses: actions/upload-artifact@v4
           with: 
             name: testReport
@@ -33,12 +49,11 @@ jobs:
     build:
       needs: tests
       runs-on: ubuntu-latest
-      outputs:
-        script-file: ${{ steps.publish.outputs.script-file }}
       steps: 
         - name: Checkout
           uses: actions/checkout@v4.2.0
         - name: Cache dependencies
+          id: cache
           uses: actions/cache@v4
           with: 
             path: ~/.npm
@@ -55,9 +70,7 @@ jobs:
           with:
             name: dist-files
             path: dist
-            #   |
-            #  dist
-            #  package.json
+
     deploy:
       needs: build
       runs-on: ubuntu-latest
@@ -68,8 +81,6 @@ jobs:
             name: dist-files
         - name: Output contents
           run: ls
-        - name: Output filename
-          run: echo "${{ needs.build.outputs.script-file }}"
         - name: Deploy
           run: echo 'Deploying...' 
             
