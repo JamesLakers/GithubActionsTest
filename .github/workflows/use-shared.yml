@@ -15,21 +15,25 @@ jobs:
           uses: ./.github/actions
         - name: Lint code
           run: npm run lint
+
+    tests:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Checkout
+          uses: actions/checkout@v4.2.0
+        - name: Install dependencies
+          uses: ./.github/actions
+        - name: Run tests
+          id: runTests
+          run: npm run test
     
     build:
       runs-on: ubuntu-latest
       steps: 
         - name: Checkout
           uses: actions/checkout@v4.2.0
-        - name: Cache dependencies
-          id: cache
-          uses: actions/cache@v3
-          with:
-            path: node_modules
-            key: cache-node-modules ${{ hashFiles('**/package-lock.json') }}
         - name: Install dependencies
-          if: steps.cache.outputs.cache-hit != 'true'
-          run: npm ci
+          uses: ./.github/actions
         - name: Build package
           run: npm run build
         - name: Upload artifacts
