@@ -1,0 +1,7 @@
+name: Custom-Action-Deploy
+description: 'Deploys website'
+runs: 
+  using: node16
+  #pre: 
+  main: main.js
+  #post:
