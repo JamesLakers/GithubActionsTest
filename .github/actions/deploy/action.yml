@@ -11,7 +11,7 @@ inputs:
   dist-folder:
     description: 'Folder of files to be deployed'
     required: true
-  outputs:
+outputs:
    website-url:
     description: 'URL of live website'
 runs: 
