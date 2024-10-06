@@ -49,7 +49,7 @@ jobs:
       with:
         artifact-name: dist-files
 
-    javascript:
+    deploy:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
