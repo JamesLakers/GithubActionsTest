@@ -6,8 +6,9 @@ inputs:
     required: true
   bucket-region:
     description: 'AWS bucket region'
-    required: true
-  dis-folder:
+    required: false
+    default: 'us-east-1'
+  dist-folder:
     description: 'Folder of files to be deployed'
     required: true
 runs: 

@@ -5,7 +5,7 @@ const exec = require('@actions/exec');
 function run() {
 
     const bucket = core.getInput('bucket', { require: true });
-    const bucketRegion = core.getInput('bucket-region', { require: true });
+    const bucketRegion = core.getInput('bucket-region', { require: false });
     const distFolder = core.getInput('dist-folder', { require: true });
 
     const s3url = `s3://${bucket}`;
