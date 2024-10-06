@@ -12,7 +12,7 @@ inputs:
     description: 'Folder of files to be deployed'
     required: true
 outputs:
-   website-url:
+  website-url:
     description: 'URL of live website'
 runs: 
   using: node16
