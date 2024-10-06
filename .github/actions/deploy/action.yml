@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: 'Folder of files to be deployed'
     required: true
+  output:
+   website-url:
+    description: 'URL of live website'
 runs: 
   using: node16
   #pre: 

@@ -55,8 +55,15 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v4.2.0
         - name: Run custom JavaScript action
+          id: custom-action
           uses: ./.github/actions/deploy
+          env: 
+            AWS_ACCESS_KEY_ID: LAL
+            AWS_SECERT_ACCESS_KEY: LAKERS_WIN
           with: 
             bucket: jamesAwsHostBucket
             bucket-region: us-east-1
             dist-folder: ./dist
+        - name: Output website url
+          run: |
+            echo "Live URL: ${{steps.custom-action.outputs.website}}"
