@@ -56,10 +56,10 @@ jobs:
           uses: actions/checkout@v4.2.0
         - name: Run custom JavaScript action
           id: custom-action
-          uses: ./.github/actions/deploy
           env: 
             AWS_ACCESS_KEY_ID: LAL
             AWS_SECERT_ACCESS_KEY: LAKERS_WIN
+          uses: ./.github/actions/deploy
           with: 
             bucket: jamesAwsHostBucket
             bucket-region: us-east-1
