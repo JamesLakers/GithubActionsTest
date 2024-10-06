@@ -50,7 +50,7 @@ jobs:
         artifact-name: dist-files
 
     information:
-      runs-on: unbuntu-latest
+      runs-on: ubuntu-latest
       steps:
         - name: Run custom JavaScript action
           uses: ./.github/actions/deploy
