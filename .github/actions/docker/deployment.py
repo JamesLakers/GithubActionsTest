@@ -22,4 +22,5 @@ def run():
     print(f'website-url={url}', file=gh_output)
 
 
-run()
+if __name__ == '__main__':
+    run()
