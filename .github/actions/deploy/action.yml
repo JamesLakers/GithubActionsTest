@@ -1,5 +1,15 @@
 name: Custom-Action-Deploy
 description: 'Deploys website'
+inputs:
+  bucket:
+    description: 'AWS bucket name'
+    required: true
+  bucket-region:
+    description: 'AWS bucket region'
+    required: true
+  dis-folder:
+    description: 'Folder of files to be deployed'
+    required: true
 runs: 
   using: node16
   #pre: 
