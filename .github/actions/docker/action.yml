@@ -1,4 +1,4 @@
-name: Custom-Action-JavaScript
+name: Custom-Action-Deploy
 description: 'Deploys website'
 inputs:
   bucket:

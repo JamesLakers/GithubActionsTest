@@ -1,4 +1,4 @@
-name: Custom-JavaScript
+name: Custom-Docker
 on:
   workflow_dispatch:
   push:
@@ -49,14 +49,14 @@ jobs:
       with:
         artifact-name: dist-files
 
-    javascript:
+    docker:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
           uses: actions/checkout@v4.2.0
         - name: Run custom JavaScript action
           id: custom-action
-          uses: ./.github/actions/deploy
+          uses: ./.github/actions/docker
           env: 
             AWS_ACCESS_KEY_ID: LAL
             AWS_SECERT_ACCESS_KEY: LAKERS_WIN
