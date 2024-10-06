@@ -13,10 +13,10 @@ def run():
 
     s3_client = boto3.client('s3', config=configuration)
 
-    for root, subdirs, files in os.walk(dist_folder):
-        for file in files:
-            s3_client.upload_file(
-                os.path.join(root, file), bucket, file)
+    # for root, subdirs, files in os.walk(dist_folder):
+    #     for file in files:
+    #         s3_client.upload_file(
+    #             os.path.join(root, file), bucket, file)
 
     url = f'http://{bucket}.s3-website-{bucket_region}.amazonaws.com'
     print(f'website-url={url}', file=gh_output)
