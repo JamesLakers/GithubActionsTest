@@ -1,4 +1,4 @@
-name: Custom-Action-Deploy
+name: Custom-Action-Docker
 description: 'Deploys website'
 inputs:
   bucket:
@@ -15,7 +15,5 @@ outputs:
   website-url:
     description: 'URL of live website'
 runs: 
-  using: node16
-  #pre: 
-  main: main.js
-  #post:
+  using: docker
+  image: 'Dockerfile'
