@@ -19,7 +19,7 @@ def run():
     #             os.path.join(root, file), bucket, file)
 
     url = f'http://{bucket}.s3-website-{bucket_region}.amazonaws.com'
-    print(f'website-url={url}', file=gh_output)
+    print(f'website-url={url}')
 
 
 if __name__ == '__main__':
