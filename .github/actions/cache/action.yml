@@ -1,5 +1,5 @@
 name: Custom-Action-Cache-Dependencies
-description: 'Gets dependencies via npm and caches them'
+description: 'Gets dependencies via npm and caches to cache-node-modules key'
 runs: 
     using: composite
     steps:

@@ -9,43 +9,30 @@ jobs:
     lint:    
       uses: ./.github/workflows/shared-lint.yml
 
-    tests:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4.2.0
-        - name: Install dependencies action
-          uses: ./.github/actions/cache
-        - name: Run tests action
-          id: runtests
-          uses: ./.github/actions/runtests
-          with: 
-            testname: regression  
-    
     build:
-      needs: tests
       runs-on: ubuntu-latest
       steps: 
         - name: Checkout
           uses: actions/checkout@v4.2.0
         - name: Install dependencies
           uses: ./.github/actions/cache
-        - name: Build package
-          run: npm run build
-        - name: Upload artifacts
-          uses: actions/upload-artifact@v4
-          with:
-            name: dist-files
-            path: dist
+        - name: Build application
+          uses: ./.github/actions/build
 
-    deploy:
+    runtests:
       needs: build
+      uses: ./.github/workflows/shared-run-tests.yml
+      with:
+        testname: regression      
+    
+    download:
+      needs: runtests
       uses: ./.github/workflows/shared-deploy.yml
       with:
         artifact-name: dist-files
 
     uploadReport:
-      needs: [lint, build, deploy]
+      needs: [lint, build, runtests, download]
       if: failure()
       runs-on: unbuntu-latest
       steps:

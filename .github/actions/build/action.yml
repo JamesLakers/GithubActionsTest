@@ -1,0 +1,14 @@
+name: Custom-Action-Build
+description: 'Builds application and uploads files to artifacts'
+runs: 
+    using: composite
+    steps:
+    - name: Build package
+      run: npm run build
+      shell: bash
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-files
+        path: dist
