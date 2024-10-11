@@ -21,9 +21,7 @@ jobs:
 
     runtests:
       needs: build
-      uses: ./.github/workflows/shared-run-tests.yml
-      with:
-        testname: regression      
+      uses: ./.github/workflows/shared-run-tests.yml     
     
     download:
       needs: runtests
