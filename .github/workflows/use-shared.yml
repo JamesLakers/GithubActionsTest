@@ -12,7 +12,9 @@ jobs:
     tests:
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout and Install Dependencies
+        - name: Checkout
+          uses: actions/checkout@v4.2.0
+        - name: Install dependencies action
           uses: ./.github/actions/cache
         - name: Run tests action
           id: runtests
