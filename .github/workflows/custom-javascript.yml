@@ -59,7 +59,7 @@ jobs:
           env: 
             AWS_ACCESS_KEY_ID: LAL
             AWS_SECERT_ACCESS_KEY: LAKERS_WIN
-          uses: ./.github/actions/deploy
+          uses: ./.github/actions/customdeploy
           with: 
             bucket: jamesAwsHostBucket
             bucket-region: us-east-1
