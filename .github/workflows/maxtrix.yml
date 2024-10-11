@@ -8,7 +8,7 @@ on:
     paths-ignore:
       - '.github/workflows/**'
 jobs:
-    build:
+    tests:
       continue-on-error: true
       strategy: 
         matrix: 
