@@ -45,7 +45,7 @@ jobs:
 
     deploy:
       needs: build
-      uses: ./.github/workflows/shared-cache.yml
+      uses: ./.github/workflows/shared-download.yml
       with:
         artifact-name: dist-files
 
