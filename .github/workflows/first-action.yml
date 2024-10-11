@@ -45,10 +45,10 @@ jobs:
           uses: actions/upload-artifact@v4
           with:
             name: dist-files
-            path: dist
-            #   |
-            #  dist
-            #  package.json
+            path: dist  
+        - name: Output variable
+          run: echo "${{ steps.publish.outputs.script-file }}"
+
     deploy:
       needs: build
       runs-on: ubuntu-latest
