@@ -61,3 +61,5 @@ jobs:
           run: ls
         - name: Deploy
           run: echo 'Deploying...' 
+        - name: Output contents
+          run: echo "${{ toJSON(github.event) }}"
