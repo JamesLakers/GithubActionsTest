@@ -16,8 +16,8 @@ jobs:
           operating-system: [ubuntu-latest, windows-latest]
           include: 
             - node-version: 16
-            - operating-system: ubuntu-latest
-          exclude:                
+            #- operating-system: ubuntu-latest
+          exclude:
             - node-version: 12
             - operating-system: windows-latest
 
@@ -33,6 +33,3 @@ jobs:
           run: npm ci        
         - name: Build package
           run: npm run build
-        
-        
-            
