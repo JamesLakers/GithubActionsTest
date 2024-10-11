@@ -10,9 +10,13 @@ jobs:
       uses: ./.github/workflows/shared-lint.yml
 
     tests:
-      uses: ./.github/actions/runtests
-      with: 
-       testname: regression
+      runs-on: ubuntu-latest
+      steps:
+        - name: Run tests action
+          id: runtests
+          uses: ./.github/actions/runtests
+          with: 
+            testname: regression  
     
     build:
       needs: tests
