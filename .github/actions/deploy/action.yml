@@ -1,0 +1,23 @@
+name: Custom-Action-Deploy
+description: 'Downloads artifacts and deploys'
+inputs:
+  artifact-name:
+    description: Name of the deploying artifact
+    required: false
+    default: dist
+    type: string
+runs: 
+  using: composite
+  steps:
+  - name: Download artifacts
+    uses: actions/download-artifact@v4
+    with:
+      name: ${{ inputs.artifact-name }}
+
+  - name: List files
+    run: ls
+    shell: bash
+
+  - name: Deploy artifacts
+    run: echo `Deploying ${{ inputs.artifact-name }} to web...`
+    shell: bash
