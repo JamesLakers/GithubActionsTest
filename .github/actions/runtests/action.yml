@@ -11,3 +11,4 @@ runs:
     - name: Run tests
       id: runTests
       run: npm run test
+      shell: bash
