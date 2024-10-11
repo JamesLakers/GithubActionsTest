@@ -7,11 +7,7 @@ inputs:
     default: smoke
 runs: 
     using: composite
-    steps:  
-    - name: Checkout
-      uses: actions/checkout@v4.2.0
-    - name: Install dependencies
-      uses: ./.github/actions/cache
+    steps:
     - name: Run tests
       id: runTests
       run: npm run test
