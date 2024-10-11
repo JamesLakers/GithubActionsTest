@@ -6,15 +6,8 @@ on:
       - main
       - dev
 jobs:
-    lint:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Get code
-          uses: actions/checkout@v3
-        - name: Install dependencies
-          uses: ./.github/actions/cache
-        - name: Lint code
-          run: npm run lint
+    lint:    
+      uses: ./.github/workflows/shared-lint.yml
 
     tests:
       runs-on: ubuntu-latest
